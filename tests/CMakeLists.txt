@@ -1,0 +1,30 @@
+ADD_EXECUTABLE(liblog-base base.c)
+TARGET_LINK_LIBRARIES(liblog-base log ase cmocka)
+ADD_TEST(NAME liblog-base COMMAND ${WRAP_CMD} ./liblog-base)
+SET_TESTS_PROPERTIES(liblog-base PROPERTIES FAIL_REGULAR_EXPRESSION "reachable")
+TARGET_COMPILE_OPTIONS(liblog-base PRIVATE "-DLOG_USE_THREAD=0" "-DLOG_USE_FILENO=0")
+
+ADD_EXECUTABLE(liblog-basic logger.c)
+TARGET_LINK_LIBRARIES(liblog-basic log ase cmocka)
+ADD_TEST(NAME liblog-basic COMMAND ${WRAP_CMD} ./liblog-basic)
+SET_TESTS_PROPERTIES(liblog-basic PROPERTIES FAIL_REGULAR_EXPRESSION "reachable")
+TARGET_COMPILE_OPTIONS(liblog-basic PRIVATE "-DLOG_USE_THREAD=0" "-DLOG_USE_FILENO=0")
+
+ADD_EXECUTABLE(liblog-basic-thread thread.c)
+TARGET_LINK_LIBRARIES(liblog-basic-thread logthd ase cmocka)
+ADD_TEST(NAME liblog-basic-thread COMMAND ${WRAP_CMD} ./liblog-basic-thread)
+SET_TESTS_PROPERTIES(liblog-basic-thread PROPERTIES FAIL_REGULAR_EXPRESSION "reachable")
+TARGET_COMPILE_OPTIONS(liblog-basic-thread PRIVATE "-DLOG_USE_THREAD=1" "-DLOG_USE_FILENO=0")
+
+ADD_EXECUTABLE(liblog-basic-lineno logger.c)
+TARGET_LINK_LIBRARIES(liblog-basic-lineno loglno ase cmocka)
+ADD_TEST(NAME liblog-basic-lineno COMMAND ${WRAP_CMD} ./liblog-basic-lineno)
+SET_TESTS_PROPERTIES(liblog-basic-lineno PROPERTIES FAIL_REGULAR_EXPRESSION "reachable")
+TARGET_COMPILE_OPTIONS(liblog-basic-lineno PRIVATE "-DLOG_USE_THREAD=0" "-DLOG_USE_FILENO=1")
+
+ADD_EXECUTABLE(liblog-basic-thread-lineno thread.c)
+TARGET_LINK_LIBRARIES(liblog-basic-thread-lineno logthdlno ase cmocka)
+ADD_TEST(NAME liblog-basic-thread-lineno COMMAND ${WRAP_CMD} ./liblog-basic-thread-lineno)
+SET_TESTS_PROPERTIES(liblog-basic-thread-lineno PROPERTIES FAIL_REGULAR_EXPRESSION "reachable")
+TARGET_COMPILE_OPTIONS(liblog-basic-thread-lineno PRIVATE "-DLOG_USE_THREAD=1" "-DLOG_USE_FILENO=1")
+
