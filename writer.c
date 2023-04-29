@@ -15,7 +15,7 @@
 
 void writer_stdout(struct logger *log, struct abuff *buff)
 {
-        write(log->file.fd, abuff_string(buff), abuff_length(buff));
+	write(log->file.fd, abuff_string(buff), abuff_length(buff));
 }
 
 void writer_opened_file(struct logger *log, struct abuff *buff)

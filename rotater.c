@@ -128,9 +128,9 @@ void rotater_destory(struct rotater *r)
 			return;
 		close(r->lock.proc.fd);
 		r->lock.proc.fd = -1;
-#if 0
+#if LOG_USE_THREAD
 	} else if (r->mode == LOGR_M_MUTEX) {
-		pthread_mutextattr_destroy(&r->lock.thread);
+		pthread_mutex_destroy(&r->lock.thread);
 #endif
 	}
 }

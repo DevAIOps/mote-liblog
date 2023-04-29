@@ -16,7 +16,7 @@
 #include "writer.h"
 #include "rotater.h"
 
-#include "libase/base.h"
+#include "libase/abuff/abuff.h"
 
 struct logger logger;
 static int exit_register;
@@ -411,8 +411,8 @@ int logger_init(struct logger *log, const char *file, int level, int flag)
 {
 	int rc;
 
+	// register global cleanup method.
 	if (exit_register == 0) {
-		/* it's a global cleanup method. */
 		atexit(logger_terminate);
 		exit_register = 1;
 	}

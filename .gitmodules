@@ -1,0 +1,3 @@
+[submodule "libase"]
+	path = libase
+	url = git@github.com:DevAIOps/mote-libase.git

@@ -36,10 +36,6 @@
 #define LOG_BUFFER_MAX          16 * 1024
 #endif
 
-#ifndef LOG_SHRINK_TIMES
-#define LOG_SHRINK_TIMES        30
-#endif
-
 #ifndef LOG_LEAVE_STR
 #define LOG_LEAVE_STR           ">>>>> PANIC <<<<<\n"
 #endif
